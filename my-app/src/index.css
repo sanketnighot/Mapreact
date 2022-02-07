@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: uni-heavy Sans;
+  src: url("./components/assets/fonts/uni-sans/UNI\ SANS\ HEAVY.OTF");
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+@font-face {
+  font-family: uni-bold Sans;
+  src: url("./components/assets/fonts/uni-sans/UNTITLEDSANSTEST-BOLD.OTF");
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+@font-face {
+  font-family: uni-regular Sans;
+  src: url("./components/assets/fonts/uni-sans/UNI SANS REGULAR.OTF");
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+@font-face {
+  font-style: normal;
+  font-family: uni-heavy-bold-italic Sans;
+  src: url("./components/assets/fonts/uni-sans/UNTITLEDSANSTEST-BOLDITALIC.OTF");
+  font-weight: bold;
+  text-transform: uppercase;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

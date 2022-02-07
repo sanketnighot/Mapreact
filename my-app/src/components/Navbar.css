@@ -1,0 +1,44 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.logo {
+  width: 100%;
+  height: 110vh;
+  background: #07182c;
+}
+.logo img {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.middle {
+  background: url(./assets/images/retro-3d-shapes-vaporwave-style_23-2148981120\ 1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 110vh;
+}
+.right-map {
+  margin: 0px;
+  padding: 0px;
+  height: 110vh;
+  background-color: #07182c;
+}
+.no-p {
+  padding: 0px;
+}
+.middle img{
+   width: 300px;
+   position: absolute;
+   left: -144px;
+   top: 200px;
+}
+.middle img:hover,.right img:hover{
+    transition: 0.3s ease;
+    transform: scale(1.25);
+}
+.right img{
+    width: 300px;
+    position: absolute;
+    right: 178px;
+    top: 200px;
+}
