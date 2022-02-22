@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Image as KonvaImage, Stage, Layer, Rect } from "react-konva";
-import useImage from "use-image";
+// import useImage from "use-image";
 import MapData from "./mapData.json";
 // **
 import AddImage from "./AddImage";
 // **
-
 const MapCanvas = () => {
   const [eid, setId] = useState(0);
-  const [image] = useImage("Final.png");
+  // const [image] = useImage("Final.png");
   const [stage, setStage] = useState({
     scale: 1,
     x: 0,
@@ -126,19 +125,19 @@ const MapCanvas = () => {
         </Layer>
       </Stage>
       <center>
-        <div style={{ marginLeft: "5%", display: "inlineBlock" }}>
-          {eid !== 0 ? (
-            <>
-              <h1>Name: {MapData[eid - 1].owner}</h1>
-              <h2>
-                Location: {MapData[eid - 1].x}, {MapData[eid - 1].y}
-              </h2>
-              <h2>Land Type: {MapData[eid - 1].type} </h2>
-            </>
-          ) : (
-            <h1>Click/Tap the Tile to get Data</h1>
-          )}
-        </div>
+      <div style={{ marginLeft: "5%", display: "inlineBlock" }}>
+                    {eid !== 0 ? (
+                      <>
+                        <h1>Name:{MapData[eid - 1].owner}</h1>
+                        <h2>
+                          Location: {MapData[eid - 1].x}, {MapData[eid - 1].y}
+                        </h2>
+                        <h2>Land Type: {MapData[eid - 1].type} </h2>
+                      </>
+                    ) : (
+                      <h1>Click/Tap the Tile to get Data</h1>
+                    )}
+                  </div>
       </center>
     </>
   );

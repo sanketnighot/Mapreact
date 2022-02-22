@@ -10,6 +10,7 @@
 }
 a,
 p {
+  margin: 0px;
   letter-spacing: 0.5px;
   color: #fff;
 }
@@ -85,23 +86,19 @@ p {
   background-color: red;
 }
 .sale {
-  position: relative;
-  display: inline-block;
-  height: 27px;
-  width: 137px;
-  margin-top: 12px;
-  margin-left: 6px;
-  border-radius: 8px;
+  padding: 5px 11px;
+  display: flex;
+  align-items: center;
+  justify-content:left;
 }
 .sale p {
-  padding-left: 27px;
   font-size: 12px;
-  padding-top: 6px;
+  margin-left: 10px;
 }
 .active-sale {
   background-color: #252a34;
 }
-.card-container ul li:nth-child(1)::before {
+/* .card-container ul li:nth-child(1)::before {
   content: "";
   width: 15px;
   height: 15px;
@@ -130,38 +127,8 @@ p {
   position: absolute;
   top: 6px;
   left: 5px;
-}
-.card-container:nth-child(3) ul li:nth-child(1)::before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ffcbff;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-}
-.card-container:nth-child(3) ul li:nth-child(2)::before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ae61f7;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-}
-.card-container:nth-child(3) ul li:nth-child(3)::before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #3b0073;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-  border: 1px solid #fff;
-}
+} */
+
 .card-container > h3 {
   opacity: 50%;
   font-size: 16px;
@@ -303,3 +270,27 @@ p {
 /* aside Right css END from here */
 
 /* map pages css end here */
+.sale input{
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+.colour-box{
+  width: 18px;
+  height: 18px;
+  border: 1px solid #fff;
+  margin-left: 10px;
+}
+.rounded-circle{
+  border-radius: 50%;
+}
+.box1{
+  background-color: orange;
+}
+.box2{
+  background-color: red;
+}
+.box3{
+  background-color: yellowgreen;
+}
