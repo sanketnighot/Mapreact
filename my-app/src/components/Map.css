@@ -10,6 +10,7 @@
 }
 a,
 p {
+  margin: 0px;
   letter-spacing: 0.5px;
   color: #fff;
 }
@@ -69,8 +70,8 @@ p {
 }
 .card-container {
   margin: 0 auto;
-  width: 174px;
-  height: 140px;
+  width: 180px;
+  padding: 10px 0px;
   background: #343a43;
   border-radius: 12px;
   margin-top: 25px;
@@ -85,23 +86,19 @@ p {
   background-color: red;
 }
 .sale {
-  position: relative;
-  display: inline-block;
-  height: 27px;
-  width: 137px;
-  margin-top: 12px;
-  margin-left: 6px;
-  border-radius: 8px;
+  padding: 5px 11px;
+  display: flex;
+  align-items: center;
+  justify-content:left;
 }
 .sale p {
-  padding-left: 27px;
   font-size: 12px;
-  padding-top: 6px;
+  margin-left: 10px;
 }
 .active-sale {
   background-color: #252a34;
 }
-.card-container ul li:nth-child(1)::before {
+/* .card-container ul li:nth-child(1)::before {
   content: "";
   width: 15px;
   height: 15px;
@@ -130,38 +127,8 @@ p {
   position: absolute;
   top: 6px;
   left: 5px;
-}
-.card-container:nth-child(3) ul li:nth-child(1)::before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ffcbff;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-}
-.card-container:nth-child(3) ul li:nth-child(2)::before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ae61f7;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-}
-.card-container:nth-child(3) ul li:nth-child(3)::before {
-  content: "";
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #3b0073;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-  border: 1px solid #fff;
-}
+} */
+
 .card-container > h3 {
   opacity: 50%;
   font-size: 16px;
@@ -205,16 +172,19 @@ p {
   font-family: "uni-regular Sans";
 }
 .size-li {
-  position: relative;
-  display: inline-block;
+display:flex;
+align-items: center;
+justify-content: flex-start;
   height: 27px;
   width: 137px;
   margin-top: 3px;
   margin-left: 6px;
   border-radius: 8px;
 }
-.size-li::before {
-  display: none;
+.size-li input{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
 }
 .size-li p {
   padding-left: 10px;
@@ -227,6 +197,20 @@ p {
   align-items: center;
   justify-content: space-between;
   padding: 0px 15px;
+}
+.btn-apply{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.apply-btn{
+  border: 1px solid #fff;
+  border-radius: 25px;
+  box-shadow: 0 1px 6px 0 #000;
+  padding: 1px 30px;
+  text-decoration: none!important;
+  text-transform: capitalize;
+
 }
 .opensea p {
   font-size: 14px;
@@ -303,3 +287,27 @@ p {
 /* aside Right css END from here */
 
 /* map pages css end here */
+.sale input{
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  border: none;
+}
+.colour-box{
+  width: 18px;
+  height: 18px;
+  border: 1px solid #fff;
+  margin-left: 10px;
+}
+.rounded-circle{
+  border-radius: 50%;
+}
+.box1{
+  background-color: orange;
+}
+.box2{
+  background-color: red;
+}
+.box3{
+  background-color: yellowgreen;
+}
