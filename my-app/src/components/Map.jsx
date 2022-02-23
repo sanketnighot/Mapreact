@@ -86,7 +86,6 @@ const Map = () => {
                     </li>
                     <li className="sale">
                       <input
-                      className="rounded-circle"
                         type="checkbox"
                         id="platinium"
                         name="platinium"
@@ -107,18 +106,29 @@ const Map = () => {
                     <h3>Min (X,Y)</h3>
                     <input type="text" label="min(X,Y)" placeholder=" 92-12" />
                   </div>
+                  <div className=" btn-apply">
+                    <button className="btn-primary text-center apply-btn">
+<p>apply</p>
+                    </button>
+                  </div>
                 </div>
                 <div className="card-container">
                   <h3>sizes</h3>
                   <ul>
-                    <li className="size-li active-sale">
-                      <p>1x1</p>
+                    <li className="size-li">
+                       <input
+                        type="checkbox"
+                      /> <p>1x1</p>
                     </li>
                     <li className="size-li">
-                      <p>3x3</p>
+                    <input
+                        type="checkbox"
+                      /><p>3x3</p>
                     </li>
                     <li className="size-li">
-                      <p>9x9</p>
+                    <input
+                        type="checkbox"
+                      /><p>9x9</p>
                     </li>
                   </ul>
                 </div>
