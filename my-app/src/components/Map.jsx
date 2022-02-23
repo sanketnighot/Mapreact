@@ -67,32 +67,62 @@ const Map = () => {
                   <li className="sale">
                       <input
                         type="checkbox"
-                        id="premium"
+                        id="lol"
+                        name="lol"
+                        value="lol"
+                      />
+                      <div className="colour-box box1"></div>
+                      <p>LOL</p>
+                    </li>
+                    <li className="sale">
+                      <input
+                        type="checkbox"
+                        id="city"
+                        name="city"
+                        value="city"
+                      />
+                      <div className="colour-box box1"></div>
+                      <p>CITY</p>
+                    </li>
+                    <li className="sale">
+                      <input
+                        type="checkbox"
+                        id="estate"
+                        name="estate"
+                        value="estate"
+                      />
+                      <div className="colour-box box1"></div>
+                      <p>ESTATE</p>
+                    </li>
+                  <li className="sale">
+                      <input
+                        type="checkbox"
+                        id="neighbour"
+                        name="neighbour"
+                        value="neighbour"
+                      />
+                      <div className="colour-box box1"></div>
+                      <p>NEIGHBOUR</p>
+                    </li>
+                    <li className="sale">
+                      <input
+                        type="checkbox"
+                        id=" premium"
                         name="premium"
                         value="premium"
                       />
-                      <div className="colour-box box1"></div>
-                      <p>Premium</p>
-                    </li>
-                    <li className="sale">
-                      <input
-                        type="checkbox"
-                        id="ultra premium"
-                        name="ultra premium"
-                        value="ultra premium"
-                      />
                       <div className="colour-box box2"></div>
-                      <p>Ultra premium</p>
+                      <p>PREMIUM</p>
                     </li>
                     <li className="sale">
                       <input
                         type="checkbox"
-                        id="platinium"
-                        name="platinium"
-                        value="platinium"
+                        id="land"
+                        name="land"
+                        value="land"
                       />
                       <div className="colour-box box3"></div>
-                      <p>Platinium</p>
+                      <p>LAND</p>
                     </li>
                   </ul>
                 </div>
