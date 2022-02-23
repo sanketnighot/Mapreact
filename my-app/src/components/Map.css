@@ -70,8 +70,8 @@ p {
 }
 .card-container {
   margin: 0 auto;
-  width: 174px;
-  height: 140px;
+  width: 180px;
+  padding: 10px 0px;
   background: #343a43;
   border-radius: 12px;
   margin-top: 25px;
@@ -172,16 +172,19 @@ p {
   font-family: "uni-regular Sans";
 }
 .size-li {
-  position: relative;
-  display: inline-block;
+display:flex;
+align-items: center;
+justify-content: flex-start;
   height: 27px;
   width: 137px;
   margin-top: 3px;
   margin-left: 6px;
   border-radius: 8px;
 }
-.size-li::before {
-  display: none;
+.size-li input{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
 }
 .size-li p {
   padding-left: 10px;
@@ -194,6 +197,20 @@ p {
   align-items: center;
   justify-content: space-between;
   padding: 0px 15px;
+}
+.btn-apply{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.apply-btn{
+  border: 1px solid #fff;
+  border-radius: 25px;
+  box-shadow: 0 1px 6px 0 #000;
+  padding: 1px 30px;
+  text-decoration: none!important;
+  text-transform: capitalize;
+
 }
 .opensea p {
   font-size: 14px;
