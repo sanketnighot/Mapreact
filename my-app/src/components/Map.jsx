@@ -56,6 +56,8 @@ const Map = () => {
                         id="opensea"
                         name="opensea"
                         value="opensea"
+
+                        
                       />
                       <div className="colour-box box3"></div>
                       <p>Opensea(2000+)</p>
