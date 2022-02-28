@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Map from "./components/Map";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 const App = () => {
   return (
     <>

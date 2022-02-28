@@ -5,8 +5,17 @@ import white from "./assets/images/white.png";
 import rectangle73 from "./assets/images/Rectangle 73.png";
 import rectangle74 from "./assets/images/Rectangle 74.png";
 import MapCanvas from "./MapCanvas";
+import {useSelector, useDispatch} from 'react-redux';
+import axios from 'axios';
+import {setMap, selectedTile} from '../redux/actions/mapActions';
+import ContractConn from './ContractConn';
+
 const Map = () => {
-  return (
+
+	const tile = useSelector((state) => state.tile);
+
+
+  	return (
     <>
       <nav>
         <div className="container-fluid">
@@ -138,7 +147,7 @@ const Map = () => {
                   </div>
                   <div className=" btn-apply">
                     <button className="btn-primary text-center apply-btn">
-<p>apply</p>
+						<p>apply</p>
                     </button>
                   </div>
                 </div>
@@ -169,34 +178,30 @@ const Map = () => {
               </div>
             </div>
             <div className="col-sm-7 col-lg-7 nopadding">
+
+			{/* **************** */}
               <div className="map">
                 <MapCanvas />
               </div>
             </div>
+
+			{/* **************** */}
+
             <div className="col-sm-3 col-lg-3 nopadding">
               <div className="right-side-menu">
                 <div className="land-look">
                   <img src={rectangle73} alt="" />
                 </div>
-                <div className="h-land"></div>
-                <div className="you-tube">
-                  <img src={rectangle74} alt="" />
+                <div className="h-land" style={{color: 'white'}}></div>
+                <div className="y-text">
+                  <h3 style={{color: 'white'}}>
+                    {tile.name}
+                  </h3>
                 </div>
                 <div className="y-text">
-                  <h4>
-                    Post Malone, Swae Lee - Sunflower (Spider-Man: Into the
-                    Spider-Verse)
-                  </h4>
-                </div>
-                <div className="y-disclaimer">
                   <p>
-                    Licensed to YouTube by UMG (on behalf of Republic Records);
-                    CMRRA, LatinAutorPerf, UNIAO BRASILEIRA DE EDITORAS DE
-                    MUSICA - UBEM, Sony ATV Publishing, LatinAutor - SonyATV,
-                    UMPI, SOLAR Music Rights Management, BMI - Broadcast Music
-                    Inc., Kobalt Music Publishing, PEDL, LatinAutor - Warner
-                    Chappell, UMPG Publishing, AMRA, LatinAutor - UMPG,
-                    LatinAutor, Warner Chappell, and 12 music rights societies
+					{tile.price} ETH <br/>
+					<ContractConn data = {tile}/>
                   </p>
                 </div>
               </div>
