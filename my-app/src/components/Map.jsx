@@ -1,11 +1,12 @@
 import React from "react";
 import "./Map.css";
-
+import { connect } from "react-redux";
 import white from "./assets/images/white.png";
 import rectangle73 from "./assets/images/Rectangle 73.png";
 import rectangle74 from "./assets/images/Rectangle 74.png";
 import MapCanvas from "./MapCanvas";
-const Map = () => {
+
+const Map = (props) => {
   return (
     <>
       <nav>
@@ -16,7 +17,16 @@ const Map = () => {
                 <img src={white} alt="" />
               </div>
               <div className="h-map">
-                <a href="#">map</a>
+                <a href="#">map
+                {props.myname}
+                </a>
+                <button
+                  onClick={() => {
+                    props.changeName("suresh");
+                  }}
+                >
+                  change
+                </button>
               </div>
             </div>
           </div>
@@ -64,13 +74,8 @@ const Map = () => {
                 </div>
                 <div className="card-container">
                   <ul className>
-                  <li className="sale">
-                      <input
-                        type="checkbox"
-                        id="lol"
-                        name="lol"
-                        value="lol"
-                      />
+                    <li className="sale">
+                      <input type="checkbox" id="lol" name="lol" value="lol" />
                       <div className="colour-box box1"></div>
                       <p>LOL</p>
                     </li>
@@ -94,7 +99,7 @@ const Map = () => {
                       <div className="colour-box box1"></div>
                       <p>ESTATE</p>
                     </li>
-                  <li className="sale">
+                    <li className="sale">
                       <input
                         type="checkbox"
                         id="neighbour"
@@ -138,7 +143,7 @@ const Map = () => {
                   </div>
                   <div className=" btn-apply">
                     <button className="btn-primary text-center apply-btn">
-<p>apply</p>
+                      <p>apply</p>
                     </button>
                   </div>
                 </div>
@@ -146,19 +151,15 @@ const Map = () => {
                   <h3>sizes</h3>
                   <ul>
                     <li className="size-li">
-                       <input
-                        type="checkbox"
-                      /> <p>1x1</p>
+                      <input type="checkbox" /> <p>1x1</p>
                     </li>
                     <li className="size-li">
-                    <input
-                        type="checkbox"
-                      /><p>3x3</p>
+                      <input type="checkbox" />
+                      <p>3x3</p>
                     </li>
                     <li className="size-li">
-                    <input
-                        type="checkbox"
-                      /><p>9x9</p>
+                      <input type="checkbox" />
+                      <p>9x9</p>
                     </li>
                   </ul>
                 </div>
@@ -207,4 +208,16 @@ const Map = () => {
     </>
   );
 };
-export default Map;
+const mapSateToProp = (state) => {
+  return {
+    myname: state.name,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    changeName:(name) => {
+      dispatch({ type: 'CHANGE_NAME', payload: name });
+    },
+  };
+};
+export default connect(mapSateToProp, mapDispatchToProps)(Map);

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { Image as KonvaImage, Stage, Layer, Rect } from "react-konva";
-// import useImage from "use-image";
 import MapData from "./mapData.json";
 // **
 import AddImage from "./AddImage";
 // **
 const MapCanvas = () => {
   const [eid, setId] = useState(0);
-  // const [image] = useImage("Final.png");
   const [stage, setStage] = useState({
     scale: 1,
     x: 0,
