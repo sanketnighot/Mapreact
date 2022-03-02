@@ -210,14 +210,14 @@ const Map = (props) => {
 };
 const mapSateToProp = (state) => {
   return {
-    myname: state.name,
+    myname:state.name,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     changeName:(name) => {
-      dispatch({ type: 'CHANGE_NAME', payload: name });
+      dispatch({ type: 'CHANGE_NAME',payload: name });
     },
   };
 };
-export default connect(mapSateToProp, mapDispatchToProps)(Map);
+export default connect(mapSateToProp,mapDispatchToProps)(Map);
