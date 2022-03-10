@@ -60,34 +60,36 @@ const ContractConn = (props) => {
             const {ethereum} =window;
             if (ethereum) {
 				const info = props.data
-				console.log("info: ", info)
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 const contract = new ethers.Contract(contractAddress, abi, signer);
                 setDispMsg("Contract Connected");
                 var hash = sha256.create();
-                const hashVal = hash.update("45" + salt).hex();
-                console.log(hashVal);
+				const price = Web3.utils.toWei((info.price).toString(), 'ether')
+                const hashVal = hash.update(price.toString() + salt).hex();
                 setDispMsg("Minting ...");
-				// const ipfsData = {
-				// 	name: info.name,
-				// 	image: "ipfs://QmSzD6AspMHsULuPeGVWsTywVKCFAsDVnRPVSt7832EiFY",
-				// 	external_link: "http://www.lordsofthelands.io",
-				// 	external_url: "http://www.lordsofthelands.io",
-				// 	description: "This is the Test NFT Minted",
-				// 	attributes: [
-				// 		{
-				// 			trait_type: "Type",
-				// 			value: "LAND",
-				// 		},
-				// 		{
-				// 			trait_type: "Variant",
-				// 			value: info.landType,
-				// 		}
-				// 	]
-				// }
-				const ipfsData = "https://ipfs.io/ipfs/QmReL63vqRaN2FszQkzdTZU3XB2tq81mreiyiKUMdQNhnw";
-                let nftTxn = await contract.mint("0x" + hashVal, info.tokenId, ipfsData, 0, { value: 45 })
+				const ipfsData = {
+					name: info.name,
+					image: "https://ipfs.io/ipfs/QmSzD6AspMHsULuPeGVWsTywVKCFAsDVnRPVSt7832EiFY",
+					external_link: "http://www.lordsofthelands.io",
+					external_url: "http://www.lordsofthelands.io",
+					description: "This is the Test NFT Minted",
+					attributes: [
+						{
+							trait_type: "Type",
+							value: "LAND",
+						},
+						{
+							trait_type: "Variant",
+							value: info.landType,
+						}
+					]
+				}
+
+				const ipfsHash = await axios.post('http://localhost:8000/map/addIPFS', ipfsData)
+				console.log(ipfsHash.data)
+				// const ipfsData = "https://ipfs.io/ipfs/QmReL63vqRaN2FszQkzdTZU3XB2tq81mreiyiKUMdQNhnw";
+                let nftTxn = await contract.mint("0x" + hashVal, info.tokenId, `http://ipfs.io/ipfs/${ipfsHash.data}`, 0, { value: price })
                 console.log(nftTxn);
 				setDispMsg(`Check Txn here https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
             } else {

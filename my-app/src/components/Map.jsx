@@ -1,9 +1,7 @@
 import React from "react";
 import "./Map.css";
-
 import white from "./assets/images/white.png";
 import rectangle73 from "./assets/images/Rectangle 73.png";
-import rectangle74 from "./assets/images/Rectangle 74.png";
 import MapCanvas from "./MapCanvas";
 import {useSelector, useDispatch} from 'react-redux';
 import axios from 'axios';
