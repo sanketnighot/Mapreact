@@ -125,7 +125,9 @@ const ContractConn = (props) => {
     return (
       <div className='main-app'>
         <div>
+          <br/>
             {currentAccount ? mintNftButton() : connectWalletButton()} <br/>
+            <br/>
             {dispMsg}
         </div>
       </div>

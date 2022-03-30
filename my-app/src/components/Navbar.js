@@ -8,6 +8,9 @@ export default function Navbar() {
   return (
     <>
       <div className="navbar">
+        <div className="container-fluid">
+          <div className="row">
+
         <div className="col-md-3 logo">
           <img src={logo} alt="" />
         </div>
@@ -23,6 +26,8 @@ export default function Navbar() {
             </Link>
           
           </div>
+        </div>
+        </div>
         </div>
       </div>
     </>

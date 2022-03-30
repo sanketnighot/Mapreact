@@ -3,17 +3,35 @@ import "./Map.css";
 import white from "./assets/images/white.png";
 import rectangle73 from "./assets/images/Rectangle 73.png";
 import MapCanvas from "./MapCanvas";
-import {useSelector, useDispatch} from 'react-redux';
-import axios from 'axios';
-import {setMap, selectedTile} from '../redux/actions/mapActions';
-import ContractConn from './ContractConn';
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { setMap, selectedTile } from "../redux/actions/mapActions";
+import ContractConn from "./ContractConn";
+
+const leftHide = () => {
+  const hide = document.getElementById("r-menu");
+  if (hide.style.display == "none") {
+    hide.style.display = "block";
+  } else {
+    hide.style.display = "block";
+  }
+  console.log(hide);
+};
+
+// window.onload=()=>{
+//   const hide = document.getElementById("r-menu");
+//   if (hide.style.display == "none") {
+//     hide.style.display = "block";
+//   } else {
+//     hide.style.display = "none";
+//   }
+//   console.log(hide);
+// }
 
 const Map = () => {
+  const tile = useSelector((state) => state.tile);
 
-	const tile = useSelector((state) => state.tile);
-
-
-  	return (
+  return (
     <>
       <nav>
         <div className="container-fluid">
@@ -29,9 +47,10 @@ const Map = () => {
           </div>
         </div>
       </nav>
-      <div className="left-side-menu">
-        <div className="container-fluid">
-          <div className="row">
+
+      <div className="container-fluid">
+        <div className="row">
+          <div className="left-side-menu">
             <div className="col-sm-2 col-lg-2 nopadding z-index-up .mr-0">
               <div className="card-wrapper .mr-0">
                 <a href="#">clear</a>
@@ -71,13 +90,8 @@ const Map = () => {
                 </div>
                 <div className="card-container">
                   <ul className>
-                  <li className="sale">
-                      <input
-                        type="checkbox"
-                        id="lol"
-                        name="lol"
-                        value="lol"
-                      />
+                    <li className="sale">
+                      <input type="checkbox" id="lol" name="lol" value="lol" />
                       <div className="colour-box box1"></div>
                       <p>LOL</p>
                     </li>
@@ -101,7 +115,7 @@ const Map = () => {
                       <div className="colour-box box1"></div>
                       <p>ESTATE</p>
                     </li>
-                  <li className="sale">
+                    <li className="sale">
                       <input
                         type="checkbox"
                         id="neighbour"
@@ -145,27 +159,23 @@ const Map = () => {
                   </div>
                   <div className=" btn-apply">
                     <button className="btn-primary text-center apply-btn">
-						<p>apply</p>
+                      <p>apply</p>
                     </button>
                   </div>
                 </div>
                 <div className="card-container">
-                  <h3>sizes</h3>
+                  <h3>sizes </h3>
                   <ul>
                     <li className="size-li">
-                       <input
-                        type="checkbox"
-                      /> <p>1x1</p>
+                      <input type="checkbox" /> <p>1x1</p>
                     </li>
                     <li className="size-li">
-                    <input
-                        type="checkbox"
-                      /><p>3x3</p>
+                      <input type="checkbox" />
+                      <p>3x3</p>
                     </li>
                     <li className="size-li">
-                    <input
-                        type="checkbox"
-                      /><p>9x9</p>
+                      <input type="checkbox" />
+                      <p>9x9</p>
                     </li>
                   </ul>
                 </div>
@@ -175,34 +185,35 @@ const Map = () => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-7 col-lg-7 nopadding">
 
-			{/* **************** */}
-              <div className="map">
-                <MapCanvas />
-              </div>
+            {/* **************** */}
+            <div className="map" onClick={leftHide}>
+              <MapCanvas />
             </div>
 
-			{/* **************** */}
+            {/* **************** */}
 
-            <div className="col-sm-3 col-lg-3 nopadding">
-              <div className="right-side-menu">
-                <div className="land-look">
-                  <img src={rectangle73} alt="" />
-                </div>
-                <div className="h-land" style={{color: 'white'}}></div>
-                <div className="y-text">
-                  <h3 style={{color: 'white'}}>
-                    {tile.name}
-                  </h3>
-                </div>
-                <div className="y-text">
-                  <p>
-					{tile.price} ETH <br/>
-					<ContractConn data = {tile}/>
-                  </p>
-                </div>
+            <div className="right-side-menu" id="r-menu">
+              <div className="land-look">
+                <img src={rectangle73} alt="" />
               </div>
+              <div className="h-land" style={{ color: "white" }}></div>
+              <div className="y-text">
+                <h3 style={{ color: "white" }}>{tile.name}</h3>
+              </div>
+              <div className="y-text">
+                <p>
+                  {tile.price} ETH <br />
+                  <ContractConn data={tile} />
+                </p>
+              </div>
+              <div className="l-loc">
+                <h4>location</h4>
+                <p>{tile.name}</p>
+               <h4>size</h4>
+               <p>{tile.size}</p>
+              </div>
+
             </div>
           </div>
         </div>

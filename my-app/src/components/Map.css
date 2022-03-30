@@ -41,8 +41,8 @@ p {
   background: #343a43 !important;
 }
 .card-wrapper {
-  height: 125vh;
-  width: 233px;
+  height: 100%;
+  width: 100%;
   background: #1c2128;
   padding-bottom: 49px;
 }
@@ -228,13 +228,13 @@ justify-content: flex-start;
 .map img {
   width: 100%;
   max-width: fit-content;
-  height: 125vh;
+  height:100%;
 }
 /* aside left css END from here */
 /* aside Right css START from here*/
 
 .right-side-menu {
-  height: 125vh;
+  height: 100%;
   background: #1c2128;
   padding-bottom: 49px;
 }
@@ -278,8 +278,7 @@ justify-content: flex-start;
   opacity: 50%;
 }
 .map {
-  width: 100%;
-  height: 125vh;
+  height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   /* background-image: url("./assets/images/abstract.png"); */
@@ -311,3 +310,37 @@ justify-content: flex-start;
 .box3{
   background-color: yellowgreen;
 }
+.connect-wallet-button{
+  border: 1px solid #fff;
+    border-radius: 25px;
+    box-shadow: 0 1px 6px 0 #000;
+    padding: 1px 30px;
+    text-decoration: none!important;
+    text-transform: capitalize;
+     background-color: #007bff;
+}
+#r-menu{
+  min-width: 310px;
+transition: 2s ease-in-out;
+  display: none;
+}
+
+.left-side-menu{
+  display: flex;
+  padding: 0px;
+  justify-content: center;
+}
+.l-loc{
+  margin: 0 auto;
+  padding: 20px 35px;
+}
+.l-loc h4{
+  color: #fff;
+}
+.l-loc p{
+  color: #13ff0f;
+}
+.mint-nft-button{
+  margin: 10px;
+}
+
