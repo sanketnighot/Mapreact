@@ -5,6 +5,7 @@ import rectangle73 from "./assets/images/Rectangle 73.png";
 import MapCanvas from "./MapCanvas";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import etprice from "./assets/images/ether.png";
 import { setMap, selectedTile } from "../redux/actions/mapActions";
 import ContractConn from "./ContractConn";
 
@@ -12,6 +13,7 @@ const leftHide = () => {
   const hide = document.getElementById("r-menu");
   if (hide.style.display == "none") {
     hide.style.display = "block";
+    hide.style.transition = "10s ease-in-out";
   } else {
     hide.style.display = "block";
   }
@@ -194,26 +196,41 @@ const Map = () => {
             {/* **************** */}
 
             <div className="right-side-menu" id="r-menu">
+              <div className="wrapper-r-m">
               <div className="land-look">
                 <img src={rectangle73} alt="" />
               </div>
-              <div className="h-land" style={{ color: "white" }}></div>
               <div className="y-text">
-                <h3 style={{ color: "white" }}>{tile.name}</h3>
+                <ContractConn data={tile} />
               </div>
-              <div className="y-text">
+              <div className="w-l">
+                <div className="l-detail">
+                  <p>{tile.name}</p>
+                </div>
+                <div className="m-l-d">
+                  <div className="l-detail2">
+                    <img src={etprice} alt="ether" />
+                  </div>
+                  <div className="eth-p">
+                    <p>{tile.price}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="para-land">
                 <p>
-                  {tile.price} ETH <br />
-                  <ContractConn data={tile} />
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna
                 </p>
               </div>
-              <div className="l-loc">
-                <h4>location</h4>
-                <p>{tile.name}</p>
-               <h4>size</h4>
-               <p>{tile.size}</p>
+              <div className="assets-d">
+                <div className="asets-d1"></div>
+                <div className="asets-d1"></div>
+                <div className="asets-d1"></div>
               </div>
-
+              <div className="adlol">
+                <div className="land-d"></div>
+              </div>
+              </div>
             </div>
           </div>
         </div>
