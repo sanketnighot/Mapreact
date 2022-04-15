@@ -52,9 +52,10 @@ const Map = () => {
 
       <div className="container-fluid">
         <div className="row">
-          <div className="left-side-menu">
+          <div className="left-side-menu" id="">
             <div className="col-sm-2 col-lg-2 nopadding z-index-up .mr-0">
-              <div className="card-wrapper .mr-0">
+              <div className="card-wrapper  mr-0">
+                <div className="w-l-wrap">
                 <a href="#">clear</a>
                 <div className="card-container">
                   <ul className>
@@ -184,6 +185,7 @@ const Map = () => {
                 <div className="opensea">
                   <p>Find Land on Openseas</p>
                   <i className="fas fa-external-link-alt" />
+                </div>
                 </div>
               </div>
             </div>
