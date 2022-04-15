@@ -52,7 +52,7 @@ const Map = () => {
 
       <div className="container-fluid">
         <div className="row">
-          <div className="left-side-menu" id="">
+          <div className="left-side-menu" id="l-menu">
             <div className="col-sm-2 col-lg-2 nopadding z-index-up .mr-0">
               <div className="card-wrapper  mr-0">
                 <div className="w-l-wrap">
