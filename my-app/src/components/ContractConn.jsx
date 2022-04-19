@@ -55,63 +55,85 @@ const ContractConn = (props) => {
     }
   
     const mintNftHandler = async () => {
-        try {
-
-            const {ethereum} =window;
-            if (ethereum) {
-				const info = props.data
-                const provider = new ethers.providers.Web3Provider(ethereum);
-                const signer = provider.getSigner();
-                const contract = new ethers.Contract(contractAddress, abi, signer);
-                setDispMsg("Checking Status");
-
-				const tileUpdate = await fetch(`http://localhost:8000/map/getTile?x=${info.x}&y=${info.y}`)
-				if (tileUpdate.status === "MINTED") {
-					setDispMsg("This tile is already MINTED !")
-				} else if (tileUpdate.status === "BOOKED") {
-					setDispMsg("This tile is BOOKED by someone else !")
-				} else if (tileUpdate.status === "NOT_FOR_SALE") {
-					setDispMsg("This tile is not for SALE !")
-				} else {
-					var hash = sha256.create();
-					const price = Web3.utils.toWei((info.price).toString(), 'ether')
-					const hashVal = hash.update(price.toString() + salt).hex();
-					setDispMsg("Minting ...");
-					const ipfsData = {
-						name: info.name,
-						image: "https://ipfs.io/ipfs/QmSzD6AspMHsULuPeGVWsTywVKCFAsDVnRPVSt7832EiFY",
-						external_link: "http://www.lordsofthelands.io",
-						external_url: "http://www.lordsofthelands.io",
-						description: "This is the Test NFT Minted",
-						attributes: [
-							{
-								trait_type: "Type",
-								value: "LAND",
-							},
-							{
-								trait_type: "Variant",
-								value: info.landType,
+		const infos = props.data
+		setDispMsg("Checking Status");
+		const tileUpdate = await axios.get(`http://localhost:8000/map/getTile?x=${infos.x}&y=${infos.y}`)
+		if (tileUpdate.data.status === "MINTED") {
+			console.log("MINTED");
+			return setDispMsg("This tile is already MINTED !")
+		} else if (tileUpdate.data.status === "BOOKED") {
+			console.log("BOOKED");
+			return setDispMsg("This tile is BOOKED by someone else !")
+		} else if (tileUpdate.data.status === "NOT_FOR_SALE") {
+			console.log("NOT_FOR_SALE");
+			return setDispMsg("This tile is not for SALE !")
+		} else if (tileUpdate.data.status === "FOR_SALE"){
+			try {
+					const info = props.data
+					const succsData = {
+						x: info.x,
+						y: info.y,
+						update: {
+							status: "BOOKED"
 							}
-						]
-					}
+						}
+						axios.post('http://localhost:8000/map/updateTile', succsData)
+					const {ethereum} =window;
+				if (ethereum) {
+					
+					const provider = new ethers.providers.Web3Provider(ethereum);
+					const signer = provider.getSigner();
+					const contract = new ethers.Contract(contractAddress, abi, signer);
 
-					const ipfsHash = await axios.post('http://localhost:8000/map/addIPFS', ipfsData)
-					console.log(ipfsHash.data)
-					// const ipfsData = "https://ipfs.io/ipfs/QmReL63vqRaN2FszQkzdTZU3XB2tq81mreiyiKUMdQNhnw";
-					let nftTxn = await contract.mint("0x" + hashVal, info.tokenId, `http://ipfs.io/ipfs/${ipfsHash.data}`, 0, { value: price })
-					console.log(nftTxn);
-					setDispMsg(`Check Txn here https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
+						var hash = sha256.create();
+						const price = Web3.utils.toWei((info.price).toString(), 'ether')
+						const hashVal = hash.update(price.toString() + salt).hex();
+						setDispMsg("Minting ...");
+						const ipfsData = {
+							name: info.name,
+							image: "https://ipfs.io/ipfs/QmSzD6AspMHsULuPeGVWsTywVKCFAsDVnRPVSt7832EiFY",
+							external_link: "http://www.lordsofthelands.io",
+							external_url: "http://www.lordsofthelands.io",
+							description: "This is the Test NFT Minted",
+							attributes: [
+								{
+									trait_type: "Type",
+									value: "LAND",
+								},
+								{
+									trait_type: "Variant",
+									value: info.landType,
+								}
+							]
+						}
+
+						const ipfsHash = await axios.post('http://localhost:8000/map/addIPFS', ipfsData)
+						console.log(ipfsHash.data)
+						// const ipfsData = "https://ipfs.io/ipfs/QmReL63vqRaN2FszQkzdTZU3XB2tq81mreiyiKUMdQNhnw";
+						let nftTxn = await contract.mint("0x" + hashVal, info.tokenId, `http://ipfs.io/ipfs/${ipfsHash.data}`, 0, { value: price })
+						console.log(nftTxn);
+						setDispMsg(`Check Txn here https://rinkeby.etherscan.io/tx/${nftTxn.hash}`);
+						
+						const succData = {
+							x: info.x,
+							y: info.y,
+							update: {
+								status: "MINTED"
+								}
+							}
+							axios.post('http://localhost:8000/map/updateTile', succData)
+					
+				
+				} else {
+					setDispMsg("Ethereum Object Does not Exists");
+					return alert("Ethereum Object Does not Exists");
 				}
-               
-            } else {
-                setDispMsg("Ethereum Object Does not Exists");
-                return alert("Ethereum Object Does not Exists");
-            }
 
-        } catch (e) {
-            console.log(e);
-            return alert("Error");
-        }
+			} catch (e) {
+				console.log(e);
+				return alert("Error", e);
+			}
+		}
     }
 
     const connectWalletButton = () => {

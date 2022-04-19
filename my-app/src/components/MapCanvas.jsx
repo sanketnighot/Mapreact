@@ -8,16 +8,22 @@ import {setMap, selectedTile} from '../redux/actions/mapActions';
 // **
 
 const MapCanvas = () => {
+	const [curMap, setCurrMap] = useState([])
+
 	const dispatch = useDispatch();
 	const fetchMap = async () => {
 		const response = await axios.get("http://localhost:8000/map/getMap").catch((err) => {
 			console.log(err);
 		});
 		await dispatch(setMap(response.data));
+		setCurrMap(response.data);
 	}
 	useEffect( ()=> {
-		fetchMap();
-	}, []);
+		const interval = setInterval(() => {
+			fetchMap();
+			}, 5000);
+		return () => clearInterval(interval);
+	},[]);
 	const dbMapData = useSelector((state) => state.map.map);
 	// **
 	const [eid, setId] = useState(0);
@@ -28,7 +34,7 @@ const MapCanvas = () => {
 		x: 0,
 		y: 0,
 	});
-
+	
   	const handleWheel = (e) => {
     e.evt.preventDefault();
     const scaleBy = 1.02;
@@ -59,9 +65,16 @@ const MapCanvas = () => {
 		
 		}
 
-  	const getColor = (land, size, id) => {
-		if (id === eid) {
-			return "#008080";
+  	const getColor = (land, size, id, status) => {
+		// if (id === eid) {
+		// 	return "#008080";
+		// }
+		if (status === "MINTED") {
+			return "#00e600";
+		} else if (status === "BOOKED") {
+			return "#b3b300";
+		} else if (status === "NOT_FOR_SALE") {
+			return "#737373";
 		}
 		if (land === "LOL" || size === 3) {
 			return "#321d70";
@@ -76,7 +89,7 @@ const MapCanvas = () => {
 		}
 	}
 	const width = 15;
-	const Map =  dbMapData.map(
+	const Map =  curMap.map(
 		(data) => {
 		//if (data.image === "NONE") {
 			return(
@@ -86,7 +99,7 @@ const MapCanvas = () => {
 						y={(-data.y * width)+5} 
 						width={width*data.size} 
 						height={width*data.size} 
-						fill= {getColor(data.landType, data.size, data._id)}
+						fill= {getColor(data.landType, data.size, data._id, data.status)}
 						shadowBlur={(eid === data._id) ? 2 : 0} 
 						stroke={(eid === data._id) ? '#81f78e' : 'black'} 
 						zIndex={(eid === data._id) ? 5000 : -500} 

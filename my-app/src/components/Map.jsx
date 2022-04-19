@@ -15,7 +15,6 @@ const leftHide = () => {
   } else {
     hide.style.display = "block";
   }
-  console.log(hide);
 };
 
 // window.onload=()=>{
