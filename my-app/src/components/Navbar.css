@@ -11,6 +11,10 @@
   padding-top: 10px;
   padding-left: 10px;
 }
+
+.wrapper{
+  display: flex;
+}
 .middle {
   background: url(./assets/images/retro-3d-shapes-vaporwave-style_23-2148981120\ 1.png);
   background-size: cover;
@@ -27,9 +31,9 @@
   padding: 0px;
 }
 .middle img{
+  position: absolute;
    width: 300px;
-   position: absolute;
-   left: -144px;
+   left:100px;
    top: 200px;
 }
 .middle img:hover,.right img:hover{

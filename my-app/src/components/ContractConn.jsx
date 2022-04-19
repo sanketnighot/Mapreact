@@ -18,8 +18,7 @@ const ContractConn = (props) => {
         if (!ethereum) {
             setDispMsg("Wallet Not Connected");
             return alert("Wallet is not connected")
-
-        }
+            }
         const accounts = await ethereum.request({method: "eth_accounts"});
             setCurrentAccount(accounts[0]);
             console.log(accounts);
@@ -139,7 +138,7 @@ const ContractConn = (props) => {
     const connectWalletButton = () => {
       return (
         <button onClick={connectWalletHandler} className='cta-button connect-wallet-button'>
-          Connect Wallet
+       MINT NFT
         </button>
       )
     }
