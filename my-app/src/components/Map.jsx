@@ -11,7 +11,7 @@ import ContractConn from "./ContractConn";
 
 const leftHide = () => {
   const hide = document.getElementById("r-menu");
-  if (hide.style.display == "none") {
+  if (hide.style.display === "none") {
     hide.style.display = "block";
     hide.style.transition = "10s ease-in-out";
   } else {

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Web3 from 'web3';
-import {ABI} from './ABI'
+import {ABI} from './ABI'; 
 import { ethers } from 'ethers';
 import axios from 'axios';
 
@@ -24,7 +24,7 @@ const ContractConn = (props) => {
             console.log(accounts);
         
         if(accounts.length !== 0) {
-            const account = accounts[0];
+            const account = accounts[0]; 
             setCurrentAccount(account);
             setDispMsg("Wallet Connected");
             // return alert("Wallet is connected !");
@@ -83,7 +83,7 @@ const ContractConn = (props) => {
 					const provider = new ethers.providers.Web3Provider(ethereum);
 					const signer = provider.getSigner();
 					const contract = new ethers.Contract(contractAddress, abi, signer);
-
+ 
 						var hash = sha256.create();
 						const price = Web3.utils.toWei((info.price).toString(), 'ether')
 						const hashVal = hash.update(price.toString() + salt).hex();
@@ -130,6 +130,16 @@ const ContractConn = (props) => {
 
 			} catch (e) {
 				console.log(e);
+				const info = props.data
+				const succData = {
+					
+					x: info.x,
+					y: info.y,
+					update: {
+						status: "FOR_SALE"
+						}
+					}
+					axios.post('http://localhost:8000/map/updateTile', succData)
 				return alert("Error", e);
 			}
 		}
@@ -138,14 +148,14 @@ const ContractConn = (props) => {
     const connectWalletButton = () => {
       return (
         <button onClick={connectWalletHandler} className='cta-button connect-wallet-button'>
-       MINT NFT
+       Connect Wallet
         </button>
       )
     }
 
     const mintNftButton = () => {
       return (
-        <button onClick={mintNftHandler} className='cta-button mint-nft-button'>
+        <button onClick={mintNftHandler} className='cta-button connect-wallet-button'>
           Mint NFT
         </button>
       )
@@ -160,7 +170,7 @@ const ContractConn = (props) => {
           <br/>
             {currentAccount ? mintNftButton() : connectWalletButton()} <br/>
             <br/>
-            {dispMsg}
+            <p>{dispMsg}</p>
         </div>
       </div>
     )

@@ -21,7 +21,7 @@ const MapCanvas = () => {
 	useEffect( ()=> {
 		const interval = setInterval(() => {
 			fetchMap();
-			}, 5000);
+			}, 1000);
 		return () => clearInterval(interval);
 	},[]);
 	const dbMapData = useSelector((state) => state.map.map);
