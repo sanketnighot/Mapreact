@@ -7,6 +7,9 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import etprice from "./assets/images/ether.png";
 import { setMap, selectedTile } from "../redux/actions/mapActions";
+
+
+
 import ContractConn from "./ContractConn";
 
 const leftHide = () => {
