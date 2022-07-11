@@ -56,7 +56,7 @@ const ContractConn = (props) => {
     const mintNftHandler = async () => {
 		const infos = props.data
 		setDispMsg("Checking Status");
-		const tileUpdate = await axios.get(`http://localhost:8000/map/getTile?x=${infos.x}&y=${infos.y}`)
+		const tileUpdate = await axios.get(`https://lolmapapi.herokuapp.com/map/getTile?x=${infos.x}&y=${infos.y}`)
 		if (tileUpdate.data.status === "MINTED") {
 			console.log("MINTED");
 			return setDispMsg("This tile is already MINTED !")
@@ -76,7 +76,7 @@ const ContractConn = (props) => {
 							status: "BOOKED"
 							}
 						}
-						axios.post('http://localhost:8000/map/updateTile', succsData)
+						axios.post('https://lolmapapi.herokuapp.com/map/updateTile', succsData)
 					const {ethereum} =window;
 				if (ethereum) {
 					
@@ -106,7 +106,7 @@ const ContractConn = (props) => {
 							]
 						}
 
-						const ipfsHash = await axios.post('http://localhost:8000/map/addIPFS', ipfsData)
+						const ipfsHash = await axios.post('https://lolmapapi.herokuapp.com/map/addIPFS', ipfsData)
 						console.log(ipfsHash.data)
 						// const ipfsData = "https://ipfs.io/ipfs/QmReL63vqRaN2FszQkzdTZU3XB2tq81mreiyiKUMdQNhnw";
 						let nftTxn = await contract.mint("0x" + hashVal, info.tokenId, `http://ipfs.io/ipfs/${ipfsHash.data}`, 0, { value: price })
@@ -120,7 +120,7 @@ const ContractConn = (props) => {
 								status: "MINTED"
 								}
 							}
-							axios.post('http://localhost:8000/map/updateTile', succData)
+							axios.post('https://lolmapapi.herokuapp.com/map/updateTile', succData)
 					
 				
 				} else {
@@ -139,7 +139,7 @@ const ContractConn = (props) => {
 						status: "FOR_SALE"
 						}
 					}
-					axios.post('http://localhost:8000/map/updateTile', succData)
+					axios.post('https://lolmapapi.herokuapp.com/map/updateTile', succData)
 				return alert("Error", e);
 			}
 		}

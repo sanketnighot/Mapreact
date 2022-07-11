@@ -12,7 +12,7 @@ const MapCanvas = () => {
 
 	const dispatch = useDispatch();
 	const fetchMap = async () => {
-		const response = await axios.get("http://localhost:8000/map/getMap").catch((err) => {
+		const response = await axios.get("https://lolmapapi.herokuapp.com/map/getMap").catch((err) => {
 			console.log(err);
 		});
 		await dispatch(setMap(response.data));
@@ -55,7 +55,7 @@ const MapCanvas = () => {
   	};
 
 	const fetchCurrData = async (getId) => {
-		const response = await fetch(`http://localhost:8000/map/getTileById?id=${getId}`)
+		const response = await fetch(`https://lolmapapi.herokuapp.com/map/getTileById?id=${getId}`)
 			.then((res) => res.json())
 			.then(async (data) => {
 				setCurrData(data);
