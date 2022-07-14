@@ -1,12 +1,40 @@
 import React from "react";
 import "./Map.css";
-import { connect } from "react-redux";
 import white from "./assets/images/white.png";
 import rectangle73 from "./assets/images/Rectangle 73.png";
-import rectangle74 from "./assets/images/Rectangle 74.png";
 import MapCanvas from "./MapCanvas";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import etprice from "./assets/images/ether.png";
+import { setMap, selectedTile } from "../redux/actions/mapActions";
 
-const Map = (props) => {
+
+
+import ContractConn from "./ContractConn";
+
+const leftHide = () => {
+  const hide = document.getElementById("r-menu");
+  if (hide.style.display === "none") {
+    hide.style.display = "block";
+    hide.style.transition = "10s ease-in-out";
+  } else {
+    hide.style.display = "block";
+  }
+};
+
+// window.onload=()=>{
+//   const hide = document.getElementById("r-menu");
+//   if (hide.style.display == "none") {
+//     hide.style.display = "block";
+//   } else {
+//     hide.style.display = "none";
+//   }
+//   console.log(hide);
+// }
+
+const Map = () => {
+  const tile = useSelector((state) => state.tile);
+
   return (
     <>
       <nav>
@@ -17,26 +45,19 @@ const Map = (props) => {
                 <img src={white} alt="" />
               </div>
               <div className="h-map">
-                <a href="#">map
-                {props.myname}
-                </a>
-                <button
-                  onClick={() => {
-                    props.changeName("suresh");
-                  }}
-                >
-                  change
-                </button>
+                <a href="#">map</a>
               </div>
             </div>
           </div>
         </div>
       </nav>
-      <div className="left-side-menu">
-        <div className="container-fluid">
-          <div className="row">
+
+      <div className="container-fluid">
+        <div className="row">
+          <div className="left-side-menu" id="l-menu">
             <div className="col-sm-2 col-lg-2 nopadding z-index-up .mr-0">
-              <div className="card-wrapper .mr-0">
+              <div className="card-wrapper  mr-0">
+                <div className="w-l-wrap">
                 <a href="#">clear</a>
                 <div className="card-container">
                   <ul className>
@@ -148,7 +169,7 @@ const Map = (props) => {
                   </div>
                 </div>
                 <div className="card-container">
-                  <h3>sizes</h3>
+                  <h3>sizes </h3>
                   <ul>
                     <li className="size-li">
                       <input type="checkbox" /> <p>1x1</p>
@@ -167,39 +188,52 @@ const Map = (props) => {
                   <p>Find Land on Openseas</p>
                   <i className="fas fa-external-link-alt" />
                 </div>
+                </div>
               </div>
             </div>
-            <div className="col-sm-7 col-lg-7 nopadding">
-              <div className="map">
-                <MapCanvas />
-              </div>
+
+            {/* **************** */}
+            <div className="map" onClick={leftHide}>
+              <MapCanvas />
             </div>
-            <div className="col-sm-3 col-lg-3 nopadding">
-              <div className="right-side-menu">
-                <div className="land-look">
-                  <img src={rectangle73} alt="" />
+
+            {/* **************** */}
+
+            <div className="right-side-menu" id="r-menu">
+              <div className="wrapper-r-m">
+              <div className="land-look">
+                <img src={rectangle73} alt="" />
+              </div>
+              <div className="y-text">
+                <ContractConn data={tile} />
+              </div>
+              <div className="w-l">
+                <div className="l-detail">
+                  <p>{tile.name}</p>
                 </div>
-                <div className="h-land"></div>
-                <div className="you-tube">
-                  <img src={rectangle74} alt="" />
+                <div className="m-l-d">
+                  <div className="l-detail2">
+                    <img src={etprice} alt="ether" />
+                  </div>
+                  <div className="eth-p">
+                    <p>{tile.price}</p>
+                  </div>
                 </div>
-                <div className="y-text">
-                  <h4>
-                    Post Malone, Swae Lee - Sunflower (Spider-Man: Into the
-                    Spider-Verse)
-                  </h4>
-                </div>
-                <div className="y-disclaimer">
-                  <p>
-                    Licensed to YouTube by UMG (on behalf of Republic Records);
-                    CMRRA, LatinAutorPerf, UNIAO BRASILEIRA DE EDITORAS DE
-                    MUSICA - UBEM, Sony ATV Publishing, LatinAutor - SonyATV,
-                    UMPI, SOLAR Music Rights Management, BMI - Broadcast Music
-                    Inc., Kobalt Music Publishing, PEDL, LatinAutor - Warner
-                    Chappell, UMPG Publishing, AMRA, LatinAutor - UMPG,
-                    LatinAutor, Warner Chappell, and 12 music rights societies
-                  </p>
-                </div>
+              </div>
+              <div className="para-land">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna
+                </p>
+              </div>
+              <div className="assets-d">
+                <div className="asets-d1"></div>
+                <div className="asets-d1"></div>
+                <div className="asets-d1"></div>
+              </div>
+              <div className="adlol">
+                <div className="land-d"></div>
+              </div>
               </div>
             </div>
           </div>
@@ -208,16 +242,4 @@ const Map = (props) => {
     </>
   );
 };
-const mapSateToProp = (state) => {
-  return {
-    myname:state.name,
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    changeName:(name) => {
-      dispatch({ type: 'CHANGE_NAME',payload: name });
-    },
-  };
-};
-export default connect(mapSateToProp,mapDispatchToProps)(Map);
+export default Map;
