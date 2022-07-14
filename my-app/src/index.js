@@ -4,24 +4,19 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import App from './App'
-import {createStore} from "redux"
-import reducer from './components/reducer/reducer';
-import wishReducer from './components/reducer/wishReducer';
-import { Provider } from 'react-redux';
-const composeENhancer=window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-
-const store=createStore(reducer);
+import {Provider} from 'react-redux';
+import store from './redux/store';
 
 
 
 
 ReactDOM.render(
   <React.StrictMode>
+	<Provider store = {store}>
     <BrowserRouter>
-    <Provider store={store}>
-      <App/>
-      </Provider>
+      	<App/>
     </BrowserRouter>
+	</Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
